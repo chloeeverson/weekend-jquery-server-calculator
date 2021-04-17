@@ -10,7 +10,7 @@ function readyNow (){
     $('#divideButton').on('click' , divideNumbers);
     $('#clearButton').on('click' , clearInputs);
     getEquations();
-}
+}//end readyNow
 
 function addNumbers(){
     ('#equalButton').on('click' , function (event){
@@ -48,7 +48,7 @@ function postEquations() {
             console.log('error from server' , error);
             alert('sorry, could not add your item. try again later.')
     })   
-}
+}//end postEquations
 
 function getEquations() {
     
@@ -71,63 +71,64 @@ function getEquations() {
    
 }//end getEquations
 
-// function subtractNumbers(){
-//     ('#equalButton').on('click' , function (event){
-//         let firstNumber = $('#firstNumber').val();
-//         let secondNumber = $('#secondNumber').val();
-//         let addAnswer = firstNumber + secondNumber
-//         let addEquation = {
-//             first = firstNumber,
-//             type = '+',
-//             second = secondNumber,
-//             equal = '=',
-//             answer = addAnswer, 
-//         }
+function subtractNumbers(){
+    ('#equalButton').on('click' , function (event){
+        let firstNumber = $('#firstNumber').val();
+        let secondNumber = $('#secondNumber').val();
+        let subtractAnswer = firstNumber - secondNumber
+        let addEquation = {
+            first = firstNumber,
+            type = '-',
+            second = secondNumber,
+            equal = '=',
+            answer = subtractAnswer, 
+        }
         
-//         console.log('adding addition equation' , addEquation);
+        console.log('adding subtraction equation' , addEquation);
 
-//         postEquations();
-//     })
-// }
+        postEquations();
+    })
+}//end subtractNumbers
 
-// function multiplyNumbers(){
-//     ('#equalButton').on('click' , function (event){
-//         let firstNumber = $('#firstNumber').val();
-//         let secondNumber = $('#secondNumber').val();
-//         let addAnswer = firstNumber + secondNumber
-//         let addEquation = {
-//             first = firstNumber,
-//             type = '+',
-//             second = secondNumber,
-//             equal = '=',
-//             answer = addAnswer, 
-//         }
+function multiplyNumbers(){
+    ('#equalButton').on('click' , function (event){
+        let firstNumber = $('#firstNumber').val();
+        let secondNumber = $('#secondNumber').val();
+        let multiplyAnswer = firstNumber * secondNumber
+        let addEquation = {
+            first = firstNumber,
+            type = '*',
+            second = secondNumber,
+            equal = '=',
+            answer = multiplyAnswer, 
+        }
         
-//         console.log('adding addition equation' , addEquation);
+        console.log('adding multiplication equation' , addEquation);
 
-//         postEquations();
-//     })
-// }
+        postEquations();
+    })
+}//end multiplyNumbers
 
-// function divideNumbers(){
-//     ('#equalButton').on('click' , function (event){
-//         let firstNumber = $('#firstNumber').val();
-//         let secondNumber = $('#secondNumber').val();
-//         let addAnswer = firstNumber + secondNumber
-//         let addEquation = {
-//             first = firstNumber,
-//             type = '+',
-//             second = secondNumber,
-//             equal = '=',
-//             answer = addAnswer, 
-//         }
+function divideNumbers(){
+    ('#equalButton').on('click' , function (event){
+        let firstNumber = $('#firstNumber').val();
+        let secondNumber = $('#secondNumber').val();
+        let divideAnswer = firstNumber / secondNumber
+        let addEquation = {
+            first = firstNumber,
+            type = '/',
+            second = secondNumber,
+            equal = '=',
+            answer = divideAnswer, 
+        }
         
-//         console.log('adding addition equation' , addEquation);
+        console.log('adding division equation' , addEquation);
 
-//         postEquations();
-//     })
+        postEquations();
+    })
+}
 
 function clearInputs() {
     $('#firstNumber').val('');
     $('#secondNumber').val('');
-}//end clearInputs
+}
