@@ -53,7 +53,7 @@ function addNumbers(){
         //set answer of equation to the addition of two numbers
         let addAnswer = firstNumber + secondNumber
         //create object for equation
-        let addEquation = {
+        let newEquation = {
             first = firstNumber,
             type = '+',
             second = secondNumber,
@@ -61,7 +61,7 @@ function addNumbers(){
             answer = addAnswer, 
         }
         
-        console.log('adding addition equation' , addEquation);
+        console.log('adding addition equation' , newEquation);
 
         postEquations();
     })
@@ -73,7 +73,7 @@ function postEquations() {
         method: 'POST',
         url: '/equations',
         //new equation going in request body
-        data: addEquation,
+        data: newEquation,
     })
         .then( function(response) {
             console.log('response from server' , response);
@@ -116,7 +116,7 @@ function subtractNumbers(){
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let subtractAnswer = firstNumber - secondNumber
-        let addEquation = {
+        let newEquation = {
             first = firstNumber,
             type = '-',
             second = secondNumber,
@@ -124,7 +124,7 @@ function subtractNumbers(){
             answer = subtractAnswer, 
         }
         
-        console.log('adding subtraction equation' , addEquation);
+        console.log('adding subtraction equation' , newEquation);
 
         postEquations();
     })
@@ -139,7 +139,7 @@ function multiplyNumbers(){
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let multiplyAnswer = firstNumber * secondNumber
-        let addEquation = {
+        let newEquation = {
             first = firstNumber,
             type = '*',
             second = secondNumber,
@@ -147,7 +147,7 @@ function multiplyNumbers(){
             answer = multiplyAnswer, 
         }
         
-        console.log('adding multiplication equation' , addEquation);
+        console.log('adding multiplication equation' , newEquation);
 
         postEquations();
     })
@@ -162,7 +162,7 @@ function divideNumbers(){
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let divideAnswer = firstNumber / secondNumber
-        let addEquation = {
+        let newEquation = {
             first = firstNumber,
             type = '/',
             second = secondNumber,
@@ -170,7 +170,7 @@ function divideNumbers(){
             answer = divideAnswer, 
         }
         
-        console.log('adding division equation' , addEquation);
+        console.log('adding division equation' , newEquation);
 
         postEquations();
     })
