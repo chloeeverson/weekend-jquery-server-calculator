@@ -132,3 +132,20 @@ function clearInputs() {
     $('#firstNumber').val('');
     $('#secondNumber').val('');
 }
+
+function render(equationsArray){
+    $('#answerNumber').empty();
+    for (let i=0; i<equationsArray.length; i++){
+        if (i === equationsArray.length-1){
+            $('#answerNumber').append(`<h2>
+                ${equationsArray[i].answer}</h2>`)
+        }
+        $('#answerNumber').append(`
+            <li>${equationsArray[i].firstNumber} 
+            ${equationsArray[i].type} 
+            ${equationsArray[i].secondNumber}
+            ${equationsArray[i].equal}
+            ${equationsArray[i].answer}</li>
+            `)    
+    }
+}//end render
