@@ -4,19 +4,55 @@ $(readyNow);
 
 function readyNow (){
     console.log('JQ');
-    $('#addButton').on('click' , addNumbers);
-    $('#subtractButton').on('click' , subtractNumbers);
-    $('#multiplyButton').on('click' , multiplyNumbers);
-    $('#divideButton').on('click' , divideNumbers);
-    $('#clearButton').on('click' , clearInputs);
+    $('#addButton').on('click' , function(event) {
+        console.log('add button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call add numbers function
+        addNumbers();
+    })
+    $('#subtractButton').on('click' , function(event) {
+        console.log('subtract button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call subtract numbers function
+        subtractNumbers();
+    })
+    $('#multiplyButton').on('click' , function(event) {
+        console.log('multiply button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call multiply numbers function
+        multiplyNumbers();
+    })
+    $('#divideButton').on('click' , function(event) {
+        console.log('divide button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call divide numbers function
+        divideNumbers();
+    })
+    $('#clearButton').on('click' , function(event) {
+        console.log('clear button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call clear inputs function
+        clearInputs();
+    })
     getEquations();
 }//end readyNow
 
 function addNumbers(){
     ('#equalButton').on('click' , function (event){
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
+        //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
+        //set answer of equation to the addition of two numbers
         let addAnswer = firstNumber + secondNumber
+        //create object for equation
         let addEquation = {
             first = firstNumber,
             type = '+',
@@ -73,6 +109,10 @@ function getEquations() {
 
 function subtractNumbers(){
     ('#equalButton').on('click' , function (event){
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
+        //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let subtractAnswer = firstNumber - secondNumber
@@ -92,6 +132,10 @@ function subtractNumbers(){
 
 function multiplyNumbers(){
     ('#equalButton').on('click' , function (event){
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
+        //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let multiplyAnswer = firstNumber * secondNumber
@@ -111,6 +155,10 @@ function multiplyNumbers(){
 
 function divideNumbers(){
     ('#equalButton').on('click' , function (event){
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
+        //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let divideAnswer = firstNumber / secondNumber
