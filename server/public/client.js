@@ -2,43 +2,38 @@ console.log('js');
 
 $(readyNow);
 
-function readyNow (){
+function readyNow() {
     console.log('JQ');
-    $('#equalButton').on('click' , function (event){
-    console.log('equalButton clicked');
-    //prevent refreshing page from click
-    event.preventDefault();
-    runEquation();
+    $('#addButton').on('click', function (event) {
+        console.log('add button clicked');
+        // prevent refreshing of page
+        event.preventDefault();
+        // call add numbers function
+        addNumbers();
     })
-    // $('#addButton').on('click' , function(event) {
-    //     console.log('add button clicked');
-    //     //prevent refreshing of page
-    //     event.preventDefault();
-    //     //call add numbers function
-    //     addNumbers();
-    // })
-    // $('#subtractButton').on('click' , function(event) {
-    //     console.log('subtract button clicked');
-    //     //prevent refreshing of page
-    //     event.preventDefault();
-    //     //call subtract numbers function
-    //     subtractNumbers();
-    // })
-    // $('#multiplyButton').on('click' , function(event) {
-    //     console.log('multiply button clicked');
-    //     //prevent refreshing of page
-    //     event.preventDefault();
-    //     //call multiply numbers function
-    //     multiplyNumbers();
-    // })
-    // $('#divideButton').on('click' , function(event) {
-    //     console.log('divide button clicked');
-    //     //prevent refreshing of page
-    //     event.preventDefault();
-    //     //call divide numbers function
-    //     divideNumbers();
-    // })
-    $('#clearButton').on('click' , function(event) {
+
+    $('#subtractButton').on('click', function (event) {
+        console.log('subtract button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call subtract numbers function
+        subtractNumbers();
+    })
+    $('#multiplyButton').on('click', function (event) {
+        console.log('multiply button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call multiply numbers function
+        multiplyNumbers();
+    })
+    $('#divideButton').on('click', function (event) {
+        console.log('divide button clicked');
+        //prevent refreshing of page
+        event.preventDefault();
+        //call divide numbers function
+        divideNumbers();
+    })
+    $('#clearButton').on('click', function (event) {
         console.log('clear button clicked');
         //prevent refreshing of page
         event.preventDefault();
@@ -49,42 +44,12 @@ function readyNow (){
 }//end readyNow
 
 
-function runEquation(){
-    $('#addButton').on('click' , function(event) {
-            console.log('add button clicked');
-            //prevent refreshing of page
-            event.preventDefault();
-            //call add numbers function
-            addNumbers();
-        })
-        $('#subtractButton').on('click' , function(event) {
-            console.log('subtract button clicked');
-            //prevent refreshing of page
-            event.preventDefault();
-            //call subtract numbers function
-            subtractNumbers();
-        })
-        $('#multiplyButton').on('click' , function(event) {
-            console.log('multiply button clicked');
-            //prevent refreshing of page
-            event.preventDefault();
-            //call multiply numbers function
-            multiplyNumbers();
-        })
-        $('#divideButton').on('click' , function(event) {
-            console.log('divide button clicked');
-            //prevent refreshing of page
-            event.preventDefault();
-            //call divide numbers function
-            divideNumbers();
-        })
-}
-function addNumbers(){
-    // $('#equalButton').on('click' , function (event){
-    //     console.log('equalButton clicked');
-    //     //prevent refreshing page from click
-    //     event.preventDefault();
-    //     //set variable names for input numbers
+function addNumbers() {
+    $('#equalButton').on('click', function (event) {
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
+        //set variable names for input numbers
         let firstNumber = Number($('#firstNumber').val());
         let secondNumber = Number($('#secondNumber').val());
         //set answer of equation to the addition of two numbers
@@ -95,60 +60,58 @@ function addNumbers(){
             type: '+',
             second: secondNumber,
             equal: '=',
-            answer: addAnswer, 
+            answer: addAnswer,
         }
-        
-        console.log('adding addition equation' , newEquation);
 
-        postEquations();
-    // })
-    
+        console.log('adding addition equation', newEquation);
+
+        $.ajax({
+            method: 'POST',
+            url: '/equations',
+            //new equation going in request body
+            data: newEquation,
+        })
+            .then(function (response) {
+                console.log('response from server', response);
+                //pass array into rendor method to display
+                getEquations();
+            })
+            .catch(function (error) {
+                console.log('error from server', error);
+                alert('sorry, could not add your item. try again later.')
+            })
+
+    })
+
 }//end addNumbers
 
-function postEquations() {
-    $.ajax({
-        method: 'POST',
-        url: '/equations',
-        //new equation going in request body
-        data: newEquation,
-    })
-        .then( function(response) {
-            console.log('response from server' , response);
-            //pass array into rendor method to display
-            getEquations(); 
-        })
-        .catch( function(error) {
-            console.log('error from server' , error);
-            alert('sorry, could not add your item. try again later.')
-    })   
-}//end postEquations
 
 function getEquations() {
-    
+
     $.ajax({
         method: 'GET',
         url: '/equations',
         //new equation going in request body
     })
-        .then( function(response) {
-            console.log('response from server' , response);
+        .then(function (response) {
+            console.log('response from server', response);
             //pass array into rendor method to display
             render(response);
         })
-        .catch( function(error) {
-            console.log('error from server' , error);
+        .catch(function (error) {
+            console.log('error from server', error);
             alert('sorry, could not add your item. try again later.')
         })
     console.log('after making server request...');
-        
-   
+
+
 }//end getEquations
 
-function subtractNumbers(){
-    // $('#equalButton').on('click' , function (event){
-    //     console.log('equalButton clicked');
-    //     //prevent refreshing page from click
-    //     event.preventDefault();
+function subtractNumbers() {
+    $('#equalButton').on('click', function (event) {
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
         //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
@@ -158,20 +121,34 @@ function subtractNumbers(){
             type: '-',
             second: secondNumber,
             equal: '=',
-            answer: subtractAnswer, 
+            answer: subtractAnswer,
         }
-        
-        console.log('adding subtraction equation' , newEquation);
 
-        postEquations();
-    // })
+        console.log('adding subtraction equation', newEquation);
+
+        $.ajax({
+            method: 'POST',
+            url: '/equations',
+            //new equation going in request body
+            data: newEquation,
+        })
+            .then(function (response) {
+                console.log('response from server', response);
+                //pass array into rendor method to display
+                getEquations();
+            })
+            .catch(function (error) {
+                console.log('error from server', error);
+                alert('sorry, could not add your item. try again later.')
+            })
+    })
 }//end subtractNumbers
 
-function multiplyNumbers(){
-    // $('#equalButton').on('click' , function (event){
-    //     console.log('equalButton clicked');
-    //     //prevent refreshing page from click
-    //     event.preventDefault();
+function multiplyNumbers() {
+    $('#equalButton').on('click', function (event) {
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
         //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
@@ -181,20 +158,34 @@ function multiplyNumbers(){
             type: '*',
             second: secondNumber,
             equal: '=',
-            answer: multiplyAnswer, 
+            answer: multiplyAnswer,
         }
-        
-        console.log('adding multiplication equation' , newEquation);
 
-        postEquations();
-    // })
+        console.log('adding multiplication equation', newEquation);
+
+        $.ajax({
+            method: 'POST',
+            url: '/equations',
+            //new equation going in request body
+            data: newEquation,
+        })
+            .then(function (response) {
+                console.log('response from server', response);
+                //pass array into rendor method to display
+                getEquations();
+            })
+            .catch(function (error) {
+                console.log('error from server', error);
+                alert('sorry, could not add your item. try again later.')
+            })
+    })
 }//end multiplyNumbers
 
-function divideNumbers(){
-    // $('#equalButton').on('click' , function (event){
-    //     console.log('equalButton clicked');
-    //     //prevent refreshing page from click
-    //     event.preventDefault();
+function divideNumbers() {
+    $('#equalButton').on('click', function (event) {
+        console.log('equalButton clicked');
+        //prevent refreshing page from click
+        event.preventDefault();
         //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
@@ -204,33 +195,52 @@ function divideNumbers(){
             type: '/',
             second: secondNumber,
             equal: '=',
-            answer: divideAnswer, 
+            answer: divideAnswer,
         }
-        
-        console.log('adding division equation' , newEquation);
 
-        postEquations();
-    // })
+        console.log('adding division equation', newEquation);
+
+        $.ajax({
+            method: 'POST',
+            url: '/equations',
+            //new equation going in request body
+            data: newEquation,
+        })
+            .then(function (response) {
+                console.log('response from server', response);
+                //pass array into rendor method to display
+                getEquations();
+            })
+            .catch(function (error) {
+                console.log('error from server', error);
+                alert('sorry, could not add your item. try again later.')
+            })
+    })
 }
 
 function clearInputs() {
     $('#firstNumber').val('');
     $('#secondNumber').val('');
-}
+    $('#equalButton').off();
 
-function render(equationsArray){
+}//end clearInputs
+
+function render(equationsArray) {
+    //empty fields
     $('#answerNumber').empty();
-    for (let i=0; i<equationsArray.length; i++){
-        if (i === equationsArray.length-1){
+    $('#pastEquations').empty();
+    //loop through array in order to grab and append specific properties of specific index numbers
+    for (let i = 0; i < equationsArray.length; i++) {
+        if (i === equationsArray.length - 1) {
             $('#answerNumber').append(`<h2>
                 ${equationsArray[i].answer}</h2>`)
         }
-        $('#answerNumber').append(`
-            <li>${equationsArray[i].firstNumber} 
+        $('#pastEquations').append(`
+            <li>${equationsArray[i].first} 
             ${equationsArray[i].type} 
-            ${equationsArray[i].secondNumber}
+            ${equationsArray[i].second}
             ${equationsArray[i].equal}
             ${equationsArray[i].answer}</li>
-            `)    
+            `)
     }
 }//end render
