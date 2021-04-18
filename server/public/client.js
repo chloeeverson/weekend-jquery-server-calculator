@@ -4,34 +4,40 @@ $(readyNow);
 
 function readyNow (){
     console.log('JQ');
-    $('#addButton').on('click' , function(event) {
-        console.log('add button clicked');
-        //prevent refreshing of page
-        event.preventDefault();
-        //call add numbers function
-        addNumbers();
+    $('#equalButton').on('click' , function (event){
+    console.log('equalButton clicked');
+    //prevent refreshing page from click
+    event.preventDefault();
+    runEquation();
     })
-    $('#subtractButton').on('click' , function(event) {
-        console.log('subtract button clicked');
-        //prevent refreshing of page
-        event.preventDefault();
-        //call subtract numbers function
-        subtractNumbers();
-    })
-    $('#multiplyButton').on('click' , function(event) {
-        console.log('multiply button clicked');
-        //prevent refreshing of page
-        event.preventDefault();
-        //call multiply numbers function
-        multiplyNumbers();
-    })
-    $('#divideButton').on('click' , function(event) {
-        console.log('divide button clicked');
-        //prevent refreshing of page
-        event.preventDefault();
-        //call divide numbers function
-        divideNumbers();
-    })
+    // $('#addButton').on('click' , function(event) {
+    //     console.log('add button clicked');
+    //     //prevent refreshing of page
+    //     event.preventDefault();
+    //     //call add numbers function
+    //     addNumbers();
+    // })
+    // $('#subtractButton').on('click' , function(event) {
+    //     console.log('subtract button clicked');
+    //     //prevent refreshing of page
+    //     event.preventDefault();
+    //     //call subtract numbers function
+    //     subtractNumbers();
+    // })
+    // $('#multiplyButton').on('click' , function(event) {
+    //     console.log('multiply button clicked');
+    //     //prevent refreshing of page
+    //     event.preventDefault();
+    //     //call multiply numbers function
+    //     multiplyNumbers();
+    // })
+    // $('#divideButton').on('click' , function(event) {
+    //     console.log('divide button clicked');
+    //     //prevent refreshing of page
+    //     event.preventDefault();
+    //     //call divide numbers function
+    //     divideNumbers();
+    // })
     $('#clearButton').on('click' , function(event) {
         console.log('clear button clicked');
         //prevent refreshing of page
@@ -42,29 +48,60 @@ function readyNow (){
     getEquations();
 }//end readyNow
 
+
+function runEquation(){
+    $('#addButton').on('click' , function(event) {
+            console.log('add button clicked');
+            //prevent refreshing of page
+            event.preventDefault();
+            //call add numbers function
+            addNumbers();
+        })
+        $('#subtractButton').on('click' , function(event) {
+            console.log('subtract button clicked');
+            //prevent refreshing of page
+            event.preventDefault();
+            //call subtract numbers function
+            subtractNumbers();
+        })
+        $('#multiplyButton').on('click' , function(event) {
+            console.log('multiply button clicked');
+            //prevent refreshing of page
+            event.preventDefault();
+            //call multiply numbers function
+            multiplyNumbers();
+        })
+        $('#divideButton').on('click' , function(event) {
+            console.log('divide button clicked');
+            //prevent refreshing of page
+            event.preventDefault();
+            //call divide numbers function
+            divideNumbers();
+        })
+}
 function addNumbers(){
-    ('#equalButton').on('click' , function (event){
-        console.log('equalButton clicked');
-        //prevent refreshing page from click
-        event.preventDefault();
-        //set variable names for input numbers
-        let firstNumber = $('#firstNumber').val();
-        let secondNumber = $('#secondNumber').val();
+    // $('#equalButton').on('click' , function (event){
+    //     console.log('equalButton clicked');
+    //     //prevent refreshing page from click
+    //     event.preventDefault();
+    //     //set variable names for input numbers
+        let firstNumber = Number($('#firstNumber').val());
+        let secondNumber = Number($('#secondNumber').val());
         //set answer of equation to the addition of two numbers
         let addAnswer = firstNumber + secondNumber
         //create object for equation
         let newEquation = {
-            first = firstNumber,
-            type = '+',
-            second = secondNumber,
-            equal = '=',
-            answer = addAnswer, 
+            first: firstNumber,
+            type: '+',
+            second: secondNumber,
+            equal: '=',
+            answer: addAnswer, 
         }
         
         console.log('adding addition equation' , newEquation);
 
         postEquations();
-    })
+    // })
     
 }//end addNumbers
 
@@ -108,72 +145,72 @@ function getEquations() {
 }//end getEquations
 
 function subtractNumbers(){
-    ('#equalButton').on('click' , function (event){
-        console.log('equalButton clicked');
-        //prevent refreshing page from click
-        event.preventDefault();
+    // $('#equalButton').on('click' , function (event){
+    //     console.log('equalButton clicked');
+    //     //prevent refreshing page from click
+    //     event.preventDefault();
         //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let subtractAnswer = firstNumber - secondNumber
         let newEquation = {
-            first = firstNumber,
-            type = '-',
-            second = secondNumber,
-            equal = '=',
-            answer = subtractAnswer, 
+            first: firstNumber,
+            type: '-',
+            second: secondNumber,
+            equal: '=',
+            answer: subtractAnswer, 
         }
         
         console.log('adding subtraction equation' , newEquation);
 
         postEquations();
-    })
+    // })
 }//end subtractNumbers
 
 function multiplyNumbers(){
-    ('#equalButton').on('click' , function (event){
-        console.log('equalButton clicked');
-        //prevent refreshing page from click
-        event.preventDefault();
+    // $('#equalButton').on('click' , function (event){
+    //     console.log('equalButton clicked');
+    //     //prevent refreshing page from click
+    //     event.preventDefault();
         //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let multiplyAnswer = firstNumber * secondNumber
         let newEquation = {
-            first = firstNumber,
-            type = '*',
-            second = secondNumber,
-            equal = '=',
-            answer = multiplyAnswer, 
+            first: firstNumber,
+            type: '*',
+            second: secondNumber,
+            equal: '=',
+            answer: multiplyAnswer, 
         }
         
         console.log('adding multiplication equation' , newEquation);
 
         postEquations();
-    })
+    // })
 }//end multiplyNumbers
 
 function divideNumbers(){
-    ('#equalButton').on('click' , function (event){
-        console.log('equalButton clicked');
-        //prevent refreshing page from click
-        event.preventDefault();
+    // $('#equalButton').on('click' , function (event){
+    //     console.log('equalButton clicked');
+    //     //prevent refreshing page from click
+    //     event.preventDefault();
         //set variable names for input numbers
         let firstNumber = $('#firstNumber').val();
         let secondNumber = $('#secondNumber').val();
         let divideAnswer = firstNumber / secondNumber
         let newEquation = {
-            first = firstNumber,
-            type = '/',
-            second = secondNumber,
-            equal = '=',
-            answer = divideAnswer, 
+            first: firstNumber,
+            type: '/',
+            second: secondNumber,
+            equal: '=',
+            answer: divideAnswer, 
         }
         
         console.log('adding division equation' , newEquation);
 
         postEquations();
-    })
+    // })
 }
 
 function clearInputs() {
