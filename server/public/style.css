@@ -1,0 +1,28 @@
+html {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #37392E;
+    color: #DDCECD;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #8A847E;
+    padding: 10px;
+
+}
+
+
+#inputs {
+    padding-top: 50px;
+}
+
+h3 {
+    text-decoration: underline;
+}
+

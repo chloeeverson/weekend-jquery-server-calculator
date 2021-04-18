@@ -10,6 +10,7 @@
         <title>SERVER SIDE CALCULATOR</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
         <script src="jQuery.js"></script>
         <script src="client.js"></script>
     </head>
@@ -20,7 +21,7 @@
         <header>
             <h1>Server Side Calculator</h1>
         </header>
-        <section>
+        <section id="inputs">
             <input id="firstNumber" />
             <button id="addButton">+</button>
             <button id="subtractButton">-</button>
@@ -32,8 +33,8 @@
         </section>
         <section>
             <h2 id="answerNumber"></h2>
-            <ul id="pastEquations">
-            </ul>
+            <h3>All Equations</h3>
+            <div id="pastEquations"></div>
         </section>
         
     </body>

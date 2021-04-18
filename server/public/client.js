@@ -236,11 +236,11 @@ function render(equationsArray) {
                 ${equationsArray[i].answer}</h2>`)
         }
         $('#pastEquations').append(`
-            <li>${equationsArray[i].first} 
+            <div>${equationsArray[i].first} 
             ${equationsArray[i].type} 
             ${equationsArray[i].second}
             ${equationsArray[i].equal}
-            ${equationsArray[i].answer}</li>
+            ${equationsArray[i].answer}</div>
             `)
     }
 }//end render
